@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
@@ -18,22 +16,22 @@ public class MovementController : MonoBehaviour
     {
         if (Input.GetKey("left"))
         {
-            body2D.velocity = new Vector3(-10f, 0.0f, 0.0f) * xMovementSpeed;
+            body2D.velocity = Vector2.ClampMagnitude(body2D.velocity + (new Vector2(-10f, 0.0f) * xMovementSpeed), 10f);
         }
 
         if (Input.GetKey("right"))
         {
-            body2D.velocity = new Vector3(10f, 0.0f, 0.0f) * xMovementSpeed;
+            body2D.velocity = Vector2.ClampMagnitude(body2D.velocity + (new Vector2(10f, 0.0f) * xMovementSpeed), 10f);
         }
 
         if (Input.GetKey("up"))
         {
-            body2D.velocity = new Vector3(0.0f, 10f, 0.0f) * yMovementSpeed;
+            body2D.velocity = Vector2.ClampMagnitude(body2D.velocity + (new Vector2(0f, 10.0f) * yMovementSpeed), 10f);
         }
 
         if (Input.GetKey("down"))
         {
-            body2D.velocity = new Vector3(0.0f, -10f, 0.0f) * yMovementSpeed;
+            body2D.velocity = Vector2.ClampMagnitude(body2D.velocity + (new Vector2(0f, -10.0f) * yMovementSpeed), 10f);
         }
     }
 }
